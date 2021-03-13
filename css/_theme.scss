@@ -1,0 +1,56 @@
+body {
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 12px;
+}
+
+div {
+    min-height: 75px;
+}
+
+h3 {
+    border-top: slategray 1px solid;
+    border-left: slategray 1px solid;
+    border-right: slategray 1px solid;
+    color: slategray;
+}
+
+p {
+    text-align: justify;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.center {
+    text-align: center;
+}
+
+.bg-1 {
+    background-color: #dddddd;
+}
+
+.bg-2 {
+    background-color: #cecbcb;
+}
+
+.bg-3 {
+    background-color: #e7e3dd;
+}
+
+.bg-4 {
+    background-color: #d5d0cc;
+}
+
+.bg-5 {
+    background-color: rgb(233, 255, 243);
+}
+
+.bg-6 {
+    background-color: #bbbbbb;
+}

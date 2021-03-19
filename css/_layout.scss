@@ -15,72 +15,170 @@ $column-20: repeat(20, 1fr);
 
 
 @mixin two-columns($configuration) {
-    grid-column: 2 / 12;
-    @include grid-cont($column-19);
-    @if $configuration == '1-2' {
-        .lyt-col-1 {
-            grid-column: 1 / 10;
+    .lyt-cont-cols-2 {
+        grid-column: 2 / 12;
+        @include grid-cont($column-19);
+        @if $configuration == '1-2' {
+            .lyt-col-1 {
+                grid-column: 1 / 10;
+            }
+            .lyt-col-2 {
+                grid-column: 11 / 20;
+            }
+        } @else if $configuration == '1-1' { 
+            .lyt-col-1, .lyt-col-2 {
+                grid-column: 1 / 20;
+            }
         }
-        .lyt-col-2 {
-            grid-column: 11 / 20;
+    }
+}
+
+@mixin columns-small-large($configuration) {
+    .lyt-cont-cols-sm-lg {
+        grid-column: 2 / 12;
+        @include grid-cont($column-12);
+        @if $configuration == '1-2' {
+            .lyt-col-sm {
+                grid-column: 1 / 5;
+            }
+            .lyt-col-lg {
+                grid-column: 6 / 13
+            }
+        } @else if $configuration == '1-1' {
+            .lyt-col-sm, .lyt-col-lg {
+                grid-column: 1 / 13;
+            }
         }
-    } @else if $configuration == '1-1' { 
-        .lyt-col-1, .lyt-col-2 {
-            grid-column: 1 / 20;
+    }
+}
+
+@mixin columns-large-small($configuration) {
+    .lyt-cont-cols-lg-sm {
+        grid-column: 2 / 12;
+        @include grid-cont($column-12);
+        @if $configuration == '1-2' {
+            .lyt-col-lg {
+                grid-column: 1 / 8;
+            }
+            .lyt-col-sm {
+                grid-column: 9 / 13;
+            }
+        } @else if $configuration == '1-1' {
+            .lyt-col-lg, .lyt-col-sm {
+                grid-column: 1 / 13;
+            }
         }
     }
 }
 
 @mixin three-columns($configuration) {
-    grid-column: 2 / 12;
-    @include grid-cont($column-20);
-    @if $configuration == '1-2-3' {
-        .lyt-col-1 {
-            grid-column: 1 / 7;
-        }
-        .lyt-col-2 {
-            grid-column: 8 / 14;
-        }
-        .lyt-col-3 {
-            grid-column: 15 / 21;
-        }
-    } @else if $configuration == '1-1-1' {
-        .lyt-col-1, .lyt-col-2, .lyt-col-3 {
-            grid-column: 1 / 21;
+    .lyt-cont-cols-3 {
+        grid-column: 2 / 12;
+        @include grid-cont($column-20);
+        @if $configuration == '1-2-3' {
+            .lyt-col-1 {
+                grid-column: 1 / 7;
+            }
+            .lyt-col-2 {
+                grid-column: 8 / 14;
+            }
+            .lyt-col-3 {
+                grid-column: 15 / 21;
+            }
+        } @else if $configuration == '1-1-1' {
+            .lyt-col-1, .lyt-col-2, .lyt-col-3 {
+                grid-column: 1 / 21;
+            }
         }
     }
-
 }
 
 @mixin four-columns($configuration) {
-    grid-column: 2 / 12;
-    @include grid-cont($column-19);
-    @if $configuration == '1-2-3-4' {
-        .lyt-col-1 {
-            grid-column: 1 / 5;
-        }
-        .lyt-col-2 {
-            grid-column: 6 / 10;
-        }
-        .lyt-col-3 {
-            grid-column: 11 / 15;
-        }
-        .lyt-col-4 {
-            grid-column: 16 / 20;
-        }
-    } @else if $configuration  == '1-2-1-2' {
-        .lyt-col-1, .lyt-col-3 {
-            grid-column: 1 / 10;
-        }
-        .lyt-col-2, .lyt-col-4 {
-            grid-column: 11 / 20;
-        }
-    } @else if $configuration == '1-1-1-1' {
-        .lyt-col-1, .lyt-col-2, .lyt-col-3, .lyt-col-4 {
-            grid-column: 1 / 20;
+    .lyt-cont-cols-4 {
+        grid-column: 2 / 12;
+        @include grid-cont($column-19);
+        @if $configuration == '1-2-3-4' {
+            .lyt-col-1 {
+                grid-column: 1 / 5;
+            }
+            .lyt-col-2 {
+                grid-column: 6 / 10;
+            }
+            .lyt-col-3 {
+                grid-column: 11 / 15;
+            }
+            .lyt-col-4 {
+                grid-column: 16 / 20;
+            }
+        } @else if $configuration  == '1-2-1-2' {
+            .lyt-col-1, .lyt-col-3 {
+                grid-column: 1 / 10;
+            }
+            .lyt-col-2, .lyt-col-4 {
+                grid-column: 11 / 20;
+            }
+        } @else if $configuration == '1-1-1-1' {
+            .lyt-col-1, .lyt-col-2, .lyt-col-3, .lyt-col-4 {
+                grid-column: 1 / 20;
+            }
         }
     }
 }
+
+@mixin containers-large-small($configuration) {
+    @if $configuration == '1-2' {
+        .lyt-cont-lg-1-2 {
+            grid-column: 1 / 9;
+            @include grid-cont($column-8);
+            .lyt-col-lg {
+                grid-column: 2 / 8;
+            }
+        }
+        .lyt-cont-sm-2-2 {
+            grid-column: 9 / 13;
+            @include grid-cont($column-4);
+            .lyt-col-sm {
+                grid-column: 2 / 4;
+            }
+        }
+    } @else if $configuration == '1-1' {
+        .lyt-cont-lg-1-2, .lyt-cont-sm-2-2 {
+            grid-column: 1 / 13;
+            @include grid-cont($column-12);
+            .lyt-col-lg, .lyt-col-sm {
+                grid-column: 2 / 12;
+            }
+        }
+    }
+}
+
+@mixin containers-small-large($configuration) {
+    @if $configuration == '1-2' {
+        .lyt-cont-sm-1-2 {
+            grid-column: 1 / 5;
+            @include grid-cont($column-4);
+            .lyt-col-sm {
+                grid-column: 2 / 4;
+            }
+        }
+        .lyt-cont-lg-2-2 {
+            grid-column: 5 / 13;
+            @include grid-cont($column-8);
+            .lyt-col-lg {
+                grid-column: 2 / 8;
+            }
+        }
+    } @else if $configuration == '1-1' {
+        .lyt-cont-sm-1-2, .lyt-cont-lg-2-2 {
+            grid-column: 1 / 13;
+            @include grid-cont($column-12);
+            .lyt-col-sm, .lyt-col-lg {
+                grid-column: 2 / 12;
+            }
+        }
+    }
+}
+
 
 @mixin three-containers($configuration) {
     .lyt-cont-1-3, .lyt-cont-2-3, .lyt-cont-3-3 {
@@ -106,7 +204,7 @@ $column-20: repeat(20, 1fr);
         }
 }
 
-//BASE STYLES MOBILE +
+//BASE STYLES ALL SCREENS
 
 .lyt-cont-grid-all {
     @include grid-cont($column-12);
@@ -115,78 +213,21 @@ $column-20: repeat(20, 1fr);
             grid-column: 2 / 12;
         }
 
-        @include three-containers('1-2-3');
+    @include three-containers('1-2-3');
 
+    @include three-columns('1-2-3');
 
-    // Three columns in One container
+    @include columns-small-large('1-2');
 
-    .lyt-cont-cols-3 {
-        @include three-columns('1-2-3');
-    }
+    @include columns-large-small('1-2');
 
+    @include containers-large-small('1-2');
 
-    //One container for One Large and One Small column Layouts
-    .lyt-cont-cols-lg-sm {
-        grid-column: 2 / 12;
-        @include grid-cont($column-12);
-        //One Large and One Small column in One container
-        .lyt-col-lg {
-            grid-column: 1 / 8;
-        }
-        .lyt-col-sm {
-            grid-column: 9 / 13;
-        }
-    }
+    @include containers-small-large('1-2');
 
-    .lyt-cont-cols-sm-lg {
-        grid-column: 2 / 12;
-        @include grid-cont($column-12);
-        //One Small and One Large column in One container
-        .lyt-col-sm {
-            grid-column: 1 / 5;
-        }
-        .lyt-col-lg {
-            grid-column: 6 / 13
-        }
-    }
+    @include two-columns('1-2');
 
-    //One Large and One Small column in One Large and One Small container
-    .lyt-cont-lg-1-2 {
-        grid-column: 1 / 9;
-        @include grid-cont($column-8);
-        .lyt-col-lg {
-            grid-column: 2 / 8;
-        }
-    }
-    .lyt-cont-sm-2-2 {
-        grid-column: 9 / 13;
-        @include grid-cont($column-4);
-        .lyt-col-sm {
-            grid-column: 2 / 4;
-        }
-    }
-
-    //One Small and One Large column in One Small and One Large container
-    .lyt-cont-sm-1-2 {
-        grid-column: 1 / 5;
-        @include grid-cont($column-4);
-        .lyt-col-sm {
-            grid-column: 2 / 4;
-        }
-    }
-    .lyt-cont-lg-2-2 {
-        grid-column: 5 / 13;
-        @include grid-cont($column-8);
-        .lyt-col-lg {
-            grid-column: 2 / 8;
-        }
-    }
-
-    //Two eqaul columns in one container
-    .lyt-cont-cols-2 {
-        @include two-columns('1-2');
-    }
-
+    //TODO Transfer to mixin and expand for table and desktop
     //Two equal columns in Two containers
     .lyt-cont-1-2 {
         grid-column: 1 / 7;
@@ -200,12 +241,8 @@ $column-20: repeat(20, 1fr);
             grid-column: 2 / 6;
         }
     }
-    //TODO https://sass-lang.com/documentation/at-rules/control/if
-    //columnsFour('1-2-3-4')
-    //1 container with 4 equal columns
-    .lyt-cont-cols-4 {
-        @include four-columns('1-2-3-4');
-    }
+    
+    @include four-columns('1-2-3-4');
 
 }
 
@@ -216,18 +253,19 @@ $column-20: repeat(20, 1fr);
             grid-column: 2 / 12;
         }
 
-        .lyt-cont-cols-2 {
-            @include two-columns('1-1');
-        }
+        @include two-columns('1-1');
 
-        .lyt-cont-cols-3 {
-            @include three-columns('1-1-1');
-        }
+        @include columns-small-large('1-1');
 
-        //1 container with 4 equal columns
-        .lyt-cont-cols-4 {
-            @include four-columns('1-1-1-1')
-        }
+        @include columns-large-small('1-1');
+
+        @include three-columns('1-1-1');
+
+        @include four-columns('1-1-1-1');
+
+        @include containers-large-small('1-1');
+
+        @include containers-small-large('1-1');
 
         @include three-containers('1-1-1');
 }
@@ -239,18 +277,20 @@ $column-20: repeat(20, 1fr);
             grid-column: 2 / 12;
         }
 
-        .lyt-cont-cols-2 {
-            @include two-columns('1-1');
-        }
+        @include two-columns('1-1');
 
-        .lyt-cont-cols-3 {
-            @include three-columns('1-1-1');
-        }
+        @include columns-small-large('1-1');
 
-        .lyt-cont-cols-4 {
-            @include four-columns('1-1-1-1')
-        }
+        @include columns-large-small('1-1');
 
+        @include containers-large-small('1-1');
+
+        @include containers-small-large('1-1');
+
+        @include three-columns('1-1-1');
+
+        @include four-columns('1-1-1-1');
+        
         @include three-containers('1-1-1');
     
     }
@@ -260,11 +300,7 @@ $column-20: repeat(20, 1fr);
 
 @media screen and (min-width: 380px) {
     .lyt-cont-grid-tablet {
-
-        //1 container with 4 equal columns
-        .lyt-cont-cols-4 {
-            @include four-columns('1-2-1-2')
-        }
+        @include four-columns('1-2-1-2');
     }
 }
 
@@ -272,31 +308,28 @@ $column-20: repeat(20, 1fr);
 
 @media screen and (min-width: 740px) {
     .lyt-cont-grid-tablet {
-        //columnsFour('1-2-3-4')
 
+        @include two-columns('1-2');
 
-        .lyt-cont-cols-2 {
-            @include two-columns('1-2');
-        }
+        @include columns-small-large('1-2');
+   
+        @include columns-large-small('1-2');
 
-        .lyt-cont-cols-3 {
-            @include three-columns('1-2-3');
-        }
+        @include three-columns('1-2-3');
 
-        //1 container with 4 equal columns
-        .lyt-cont-cols-4 {
-            @include four-columns('1-2-3-4')
-        }
+         @include four-columns('1-2-3-4');
+
+        @include containers-large-small('1-2');
+
+        @include containers-small-large('1-2');
 
         @include three-containers('1-2-3');
     }
 
     .lyt-cont-grid-desktop {
   
-        //1 container with 4 equal columns
-        .lyt-cont-cols-4 {
-            @include four-columns('1-2-1-2')
-        }
+        @include four-columns('1-2-1-2')
+
     }
     
 }
@@ -311,18 +344,19 @@ $column-20: repeat(20, 1fr);
             grid-column: 2 / 12;
         }
 
-        .lyt-cont-cols-2 {
-            @include two-columns('1-2');
-        }
+        @include two-columns('1-2');
 
-        .lyt-cont-cols-3 {
-            @include three-columns('1-2-3');
-        }
+        @include columns-small-large('1-2');
+        
+        @include columns-large-small('1-2');
 
-        //1 container with 4 equal columns
-        .lyt-cont-cols-4 {
-            @include four-columns('1-2-3-4')
-        }
+        @include three-columns('1-2-3');
+
+        @include four-columns('1-2-3-4');
+
+        @include containers-large-small('1-2');
+
+        @include containers-small-large('1-2');
 
         @include three-containers('1-2-3');
     }

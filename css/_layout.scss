@@ -6,16 +6,16 @@ $column-12: repeat(12, 1fr);
 $column-19: repeat(19, 1fr);
 $column-20: repeat(20, 1fr);
 
-
-//extend source
-%display-grid {
-    display: grid;
-}
-
 //mixins
 @mixin grid-cont($grid-template-columns) {
     display: grid;
     grid-template-columns: $grid-template-columns;
+}
+
+@mixin one-column {
+    .lyt-col {
+        grid-column: 2 / 12;
+    }
 }
 
 @mixin two-columns($configuration) {
@@ -232,11 +232,10 @@ $column-20: repeat(20, 1fr);
 //BASE STYLES ALL SCREENS
 
 .lyt-cont-grid-all {
+
     @include grid-cont($column-12);
-        // One column Layout
-        .lyt-col {
-            grid-column: 2 / 12;
-        }
+        
+    @include one-column;
 
     @include three-containers('1-2-3');
 
@@ -259,70 +258,74 @@ $column-20: repeat(20, 1fr);
 }
 
 .lyt-cont-grid-tablet {
+
     @include grid-cont($column-12);
-        // One column Layout
-        .lyt-col {
-            grid-column: 2 / 12;
-        }
 
-        @include two-columns('1-1');
+    @include one-column;
 
-        @include two-containers('1-1');
+    @include two-columns('1-1');
 
-        @include columns-small-large('1-1');
+    @include two-containers('1-1');
 
-        @include columns-large-small('1-1');
+    @include columns-small-large('1-1');
 
-        @include three-columns('1-1-1');
+    @include columns-large-small('1-1');
 
-        @include four-columns('1-1-1-1');
+    @include three-columns('1-1-1');
 
-        @include containers-large-small('1-1');
+    @include four-columns('1-1-1-1');
 
-        @include containers-small-large('1-1');
+    @include containers-large-small('1-1');
 
-        @include three-containers('1-1-1');
+    @include containers-small-large('1-1');
+
+    @include three-containers('1-1-1');
+
 }
 
 .lyt-cont-grid-desktop {
+
     @include grid-cont($column-12);
-        // One column Layout
-        .lyt-col {
-            grid-column: 2 / 12;
-        }
-
-        @include two-columns('1-1');
-
-        @include two-containers('1-1');
-
-        @include columns-small-large('1-1');
-
-        @include columns-large-small('1-1');
-
-        @include containers-large-small('1-1');
-
-        @include containers-small-large('1-1');
-
-        @include three-columns('1-1-1');
-
-        @include four-columns('1-1-1-1');
-        
-        @include three-containers('1-1-1');
     
-    }
+    @include one-column;
+
+    @include two-columns('1-1');
+
+    @include two-containers('1-1');
+
+    @include columns-small-large('1-1');
+
+    @include columns-large-small('1-1');
+
+    @include containers-large-small('1-1');
+
+    @include containers-small-large('1-1');
+
+    @include three-columns('1-1-1');
+
+    @include four-columns('1-1-1-1');
+        
+    @include three-containers('1-1-1');
+    
+}
 
 
 //MOBILE LANDSCAPE +
 
 @media screen and (min-width: 380px) {
+
     .lyt-cont-grid-tablet {
+
         @include four-columns('1-2-1-2');
+        
     }
+
 }
 
 //TABLET +
 
 @media screen and (min-width: 740px) {
+
     .lyt-cont-grid-tablet {
 
         @include two-columns('1-2');
@@ -335,7 +338,7 @@ $column-20: repeat(20, 1fr);
 
         @include three-columns('1-2-3');
 
-         @include four-columns('1-2-3-4');
+        @include four-columns('1-2-3-4');
 
         @include containers-large-small('1-2');
 
@@ -345,8 +348,8 @@ $column-20: repeat(20, 1fr);
     }
 
     .lyt-cont-grid-desktop {
-  
-        @include four-columns('1-2-1-2')
+
+        @include four-columns('1-2-1-2');
 
     }
     
@@ -355,12 +358,12 @@ $column-20: repeat(20, 1fr);
 //DESKTOP +
 
 @media screen and (min-width: 980px) { 
+
     .lyt-cont-grid-desktop {
+
         @include grid-cont($column-12);
-            // One column Layout
-        .lyt-col {
-            grid-column: 2 / 12;
-        }
+        
+        @include one-column;
 
         @include two-columns('1-2');
 
@@ -379,5 +382,7 @@ $column-20: repeat(20, 1fr);
         @include containers-small-large('1-2');
 
         @include three-containers('1-2-3');
+
     }
+
 }
